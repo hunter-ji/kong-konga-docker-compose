@@ -4,10 +4,10 @@ Use the latest version of kong and konga, and do not need to compile, directly p
 
 Four containers:
 
-* *kong-database*
-* *kong-migrations*
-* *kong*
-* *konga*
+* *kong-database* : postgres
+* *kong-migrations* : kong
+* *kong* : kong
+* *konga* : konga
 
 
 
