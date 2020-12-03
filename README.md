@@ -27,7 +27,7 @@ kong:
   volumes:
     - "./ssl:/mnt/ssl"
   environment:
-  	- KONG_SSL_CERT=/mnt/ssl/ssl.pem
+    - KONG_SSL_CERT=/mnt/ssl/ssl.pem
     - KONG_SSL_CERT_KEY=/mnt/ssl/ssl.key
     ...
 ```
