@@ -11,8 +11,6 @@ services:
       - POSTGRES_USER=kong
       - POSTGRES_DB=kong
       - POSTGRES_PASSWORD=kong
-    networks:
-      - kong-net
     volumes:
       - "db-data-kong-postgres:/var/lib/postgresql/data"
 
@@ -25,8 +23,6 @@ services:
       - KONG_CASSANDRA_CONTACT_POINTS=kong-database
     command: kong migrations bootstrap
     restart: on-failure
-    networks:
-      - kong-net
     depends_on:
       - kong-database
 
@@ -54,8 +50,6 @@ services:
       - 8444:8444
     links:
       - kong-database:kong-database
-    networks:
-      - kong-net
     depends_on:
       - kong-migrations
 
@@ -66,8 +60,6 @@ services:
     links:
       - kong:kong
     container_name: konga
-    networks:
-      - kong-net
     environment:
       - NODE_ENV=production
 
@@ -75,5 +67,7 @@ volumes:
   db-data-kong-postgres:
 
 networks:
-  kong-net:
-    external: false
+    default:
+        external:
+            name: kong-net
+
